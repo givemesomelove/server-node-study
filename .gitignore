@@ -1,7 +1,2 @@
-# 屏蔽SocketIoDemo下的node_modules目录
-DockerDemo/node_modules
-ExpressDemo/node_modules
-MongoDBDemo/node_modules
-RedisDemo/node_modules
-SocketIoClientDemo/node_modules
-SocketIoDemo/node_modules
+# 屏蔽demo下的node_modules目录
+*/node_modules
