@@ -1,13 +1,15 @@
 const studyRedis = require('./testRedis');
 
-// (async () => {
-//     await studyRedis.connect();
-//     studyRedis.test();
-// })();
+(async () => {
+    await studyRedis.connect();
+    studyRedis.test();
+    // studyRedis.testObj();
+})();
 
 const roomManager = require('./roomManager');
 (async () => {
     await roomManager.connect();
+
     /// 创建房间
     const ownerData = { 
         id: "112233445566",

@@ -35,7 +35,7 @@ class StudyRedis {
             console.log("获取字符串:", name);
 
             /// 哈希操作
-            await this.client.hSet("user:1001", "name", "Alice", "age", "25");
+            await this.client.hSet("user:1001", {name: "John", age: 30});
             const user = await this.client.hGetAll("user:1001");
             console.log("哈希获取:", user);
 
@@ -59,6 +59,15 @@ class StudyRedis {
             /// 关闭连接
             this.client.quit();
         }
+    }
+
+    async testObj () {
+        const obj = {name: "John", age: 30};
+        await this.client.hSet("user:1001", JSON.stringify(obj));
+
+        const jsonStr = await this.client.hGetAll("user:1001");
+        const user = JSON.parse(jsonStr);
+        console.log("哈希获取对象:", user);
     }
 }
 
