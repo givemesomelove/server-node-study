@@ -1,5 +1,7 @@
 const { Server } = require('socket.io')
 
+const roomServer = require('../wsServer/roomServer');
+
 const initIO = (httpServer) => {
     /// 创建io实例
     const io = new Server(httpServer, {
@@ -33,14 +35,17 @@ const initIO = (httpServer) => {
     roomSpace.on('connection', (socket) => {
         console.log("用户连接到房间");
 
-        socket.on("message", (msg) => {
-            roomSpace.emit("message", `房间消息：${msg}`);
+        socket.on("message", async (message, block) => {
+            const response = await roomServer.handleMessage(socket, message);
+            block(response);
         });
 
         socket.on("disconnect", () => {
             console.log("用户断开了房间连接");
         });
     });
+
+    roomServer.space = roomSpace;
 }
 
 module.exports = initIO;

@@ -2,7 +2,10 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-const initIO = require('./io');
+const initIO = require('./ws/io');
+const baseReids = require('./redis/BaseRedis');
+
+baseReids.connect();
 
 const app = express();
 const httpServer = createServer(app);
