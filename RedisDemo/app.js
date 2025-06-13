@@ -1,14 +1,9 @@
-const studyRedis = require('./testRedis');
-
-(async () => {
-    await studyRedis.connect();
-    studyRedis.test();
-    // studyRedis.testObj();
-})();
 
 const roomManager = require('./roomManager');
 (async () => {
     await roomManager.connect();
+
+    await roomManager.clearAllRooms();
 
     /// 创建房间
     const ownerData = { 
