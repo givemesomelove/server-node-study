@@ -11,7 +11,6 @@ const readline = require("readline"); // 新增：引入 readline 模块
 const socket = io("ws://localhost:3000/chat");
 
 /// 房间
-
 socket.on("connect", () => {
     console.log("Connected to server");
     socket.emit("message", "Hello from client");

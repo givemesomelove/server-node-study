@@ -1,0 +1,7 @@
+{
+    "trae.enableCodelens": {
+        "enableInlineUnitTest": false,
+        "enableInlineExplain": false,
+        "enableExploreIde": false
+    }
+}
